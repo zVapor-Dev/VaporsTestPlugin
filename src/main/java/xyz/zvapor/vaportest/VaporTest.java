@@ -11,24 +11,27 @@ import xyz.zvapor.vaportest.commands.DieCommand;
 import xyz.zvapor.vaportest.listeners.JoinLeaveListener;
 
 
-public final class VaporTest extends JavaPlugin implements Listener {
+public final class VaporTest extends JavaPlugin {
+
+    private static VaporTest plugin;
 
     public int number = 10;
     @Override
     public void onEnable() {
         // Plugin startup logic
+        plugin = this;
         final FileConfiguration config = this.getConfig();
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents((new JoinLeaveListener(this)), this);
+        pm.registerEvents((new JoinLeaveListener()), this);
 
         System.out.println("VaporTest has started. Listening to whomever runs commands!");
 
 
-        getServer().getPluginManager().registerEvents(new JoinLeaveListener(this), this);
-        getCommand("countdown").setExecutor(new CountdownCommand(this));
+        getServer().getPluginManager().registerEvents(new JoinLeaveListener(), this);
+        getCommand("countdown").setExecutor(new CountdownCommand());
         getCommand("die").setExecutor(new DieCommand());
 
     }
@@ -37,5 +40,9 @@ public final class VaporTest extends JavaPlugin implements Listener {
     public void onDisable() {
         // Plugin shutdown logic
         System.out.println("VaporTest has stopped. Goodbye cruel world.");
+    }
+
+    public static VaporTest getPlugin() {
+        return plugin;
     }
 }
