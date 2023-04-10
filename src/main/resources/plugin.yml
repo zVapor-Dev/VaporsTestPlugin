@@ -14,4 +14,10 @@ commands:
     usage: /<command>
   god:
     description: This is a command that makes you invincible.
-    usage: /<command>
+    usage: /<command> [player]
+  repeat:
+    description: This is a command that repeats a message.
+    usage: /<command> <message>
+  fart:
+    description: This is a command that lets you fart on a player.
+    usage: /<command> [player]

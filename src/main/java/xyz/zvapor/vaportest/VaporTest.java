@@ -1,5 +1,6 @@
 package xyz.zvapor.vaportest;
 
+import me.kodysimpson.commandarguments.commands.FartCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,6 +9,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.zvapor.vaportest.commands.CountdownCommand;
 import xyz.zvapor.vaportest.commands.DieCommand;
+import xyz.zvapor.vaportest.commands.GodCommand;
+import xyz.zvapor.vaportest.commands.RepeatCommand;
 import xyz.zvapor.vaportest.listeners.JoinLeaveListener;
 
 
@@ -33,6 +36,9 @@ public final class VaporTest extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinLeaveListener(), this);
         getCommand("countdown").setExecutor(new CountdownCommand());
         getCommand("die").setExecutor(new DieCommand());
+        getCommand("repeat").setExecutor(new RepeatCommand());
+        getCommand("god").setExecutor(new GodCommand());
+        getCommand("fart").setExecutor(new FartCommand());
 
     }
 
