@@ -1,0 +1,14 @@
+name: VaporTest
+version: '${project.version}'
+main: xyz.zvapor.vaportest.VaporTest
+api-version: 1.19
+author: zVapor
+description: Vapor's First ever plugin!
+website: https://zvapor.xyz
+commands:
+  die:
+    description: An easy way out.
+    usage: /<command>
+  countdown:
+    description: This is a countdown command that counts down and then broadcasts a message.
+    usage: /<command>
