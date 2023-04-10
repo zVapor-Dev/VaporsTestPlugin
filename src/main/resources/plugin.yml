@@ -12,3 +12,6 @@ commands:
   countdown:
     description: This is a countdown command that counts down and then broadcasts a message.
     usage: /<command>
+  god:
+    description: This is a command that makes you invincible.
+    usage: /<command>

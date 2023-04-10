@@ -22,10 +22,10 @@ public class CountdownCommand implements CommandExecutor {
                public void run() {
                    if (number != -1){
                        if(number != 0){
-                           Bukkit.broadcastMessage(ChatColor.RED.toString() + ChatColor.BOLD + "Delta " + ChatColor.BOLD.toString() + ChatColor.WHITE + "» " + ChatColor.BOLD.toString() + ChatColor.AQUA + number);
+                           Bukkit.broadcastMessage(plugin.getConfig().getString("CountdownMessage").replace("%number%", String.valueOf(number)));
                            number--;
                        } else {
-                           Bukkit.broadcastMessage(ChatColor.RED.toString() + ChatColor.BOLD + "Delta " + ChatColor.BOLD.toString() + ChatColor.WHITE + "» " + ChatColor.AQUA + "§bI am now done counting down!");
+                           Bukkit.broadcastMessage(plugin.getConfig().getString("BroadcastMessage"));
                            number--;
                        }
                    }

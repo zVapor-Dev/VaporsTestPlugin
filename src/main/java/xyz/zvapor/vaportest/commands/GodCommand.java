@@ -12,17 +12,19 @@ public class GodCommand implements CommandExecutor {
 
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
-
-            if (player.isInvulnerable()) {
-                player.setInvulnerable(false);
-                player.sendMessage(ChatColor.RED + "God mode disabled");
-            } else if (!player.isInvulnerable()) {
-                player.setInvulnerable(true);
-                player.sendMessage(ChatColor.GREEN + "God mode enabled");
+            if (player.hasPermission("vaportest.god")) {
+                if (player.isInvulnerable()) {
+                    player.setInvulnerable(false);
+                    player.sendMessage(ChatColor.RED + "God mode disabled");
+                } else if (!player.isInvulnerable()) {
+                    player.setInvulnerable(true);
+                    player.sendMessage(ChatColor.GREEN + "God mode enabled");
+                }
+            } else {
+                player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             }
-
         }
 
-        return false;
+        return true;
     }
 }

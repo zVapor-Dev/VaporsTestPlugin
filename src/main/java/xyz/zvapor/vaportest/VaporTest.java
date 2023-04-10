@@ -1,17 +1,14 @@
 package xyz.zvapor.vaportest;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.zvapor.vaportest.commands.CountdownCommand;
 import xyz.zvapor.vaportest.commands.DieCommand;
-import xyz.zvapor.vaportest.listeners.onPlayerJoin;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import xyz.zvapor.vaportest.listeners.JoinLeaveListener;
 
 
 public final class VaporTest extends JavaPlugin implements Listener {
@@ -20,19 +17,20 @@ public final class VaporTest extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        final FileConfiguration config = this.getConfig();
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents((new JoinLeaveListener(this)), this);
 
         System.out.println("VaporTest has started. Listening to whomever runs commands!");
 
 
-        getServer().getPluginManager().registerEvents(new onPlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new JoinLeaveListener(this), this);
         getCommand("countdown").setExecutor(new CountdownCommand(this));
         getCommand("die").setExecutor(new DieCommand());
 
-    }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
-        System.out.println("VaporTest > A player has joined the server.");
     }
 
     @Override

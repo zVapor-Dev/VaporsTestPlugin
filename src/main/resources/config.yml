@@ -1,0 +1,9 @@
+# You can use %number% to display the number of seconds left!
+# You can use § to color code the messages!
+CountdownMessage: "§c§lThe game will start in §e§l%number%§c§l seconds!"
+BroadcastMessage: "§c§lThe game has started!"
+
+# Join & Leave Messages
+# You can use %player% to display the player's name!
+JoinMessage: "§c§l%player% §e§ljoined the game!"
+LeaveMessage: "§c§l%player% §e§lleft the game!"
