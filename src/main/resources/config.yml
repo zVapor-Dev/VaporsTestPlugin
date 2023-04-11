@@ -7,3 +7,7 @@ BroadcastMessage: "§c§lThe game has started!"
 # You can use %player% to display the player's name!
 JoinMessage: "§c§l%player% §e§ljoined the game!"
 LeaveMessage: "§c§l%player% §e§lleft the game!"
+
+
+
+# Spawn Location

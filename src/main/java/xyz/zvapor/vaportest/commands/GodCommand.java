@@ -13,11 +13,12 @@ public class GodCommand implements CommandExecutor {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
 
-            if (strings.length > 1){
-                player.sendMessage(ChatColor.RED + "Too many arguments!");
-                return true;
-            } else if (strings.length == 0) {
-                if (player.hasPermission("vaportest.god")) {
+            if (player.hasPermission("vaportest.god")) {
+                if (strings.length > 1) {
+                    player.sendMessage(ChatColor.RED + "Too many arguments!");
+                    return true;
+                } else if (strings.length == 0) {
+
                     if (player.isInvulnerable()) {
                         player.setInvulnerable(false);
                         player.sendMessage(ChatColor.RED + "God mode disabled");
@@ -25,11 +26,9 @@ public class GodCommand implements CommandExecutor {
                         player.setInvulnerable(true);
                         player.sendMessage(ChatColor.GREEN + "God mode enabled");
                     }
-                } else {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
-                }
-            } else if (strings.length == 1) {
-                if (player.hasPermission("vaportest.god.others")) {
+
+                } else if (strings.length == 1) {
+
                     Player target = player.getServer().getPlayer(strings[0]);
                     if (target == null) {
                         player.sendMessage(ChatColor.RED + "Player not found!");
@@ -44,9 +43,9 @@ public class GodCommand implements CommandExecutor {
                             target.sendMessage(ChatColor.GREEN + "God mode enabled by " + player.getDisplayName());
                         }
                     }
-                } else {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
                 }
+            } else {
+                player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             }
 
 
